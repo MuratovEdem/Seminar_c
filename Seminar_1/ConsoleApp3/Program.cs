@@ -28,5 +28,7 @@ switch (number)
     case (7):
         Console.WriteLine("Воскресенье");
         break;
+    default:
+        Console.WriteLine("Такого дня недели не существует)");
+        break;
 }
-Console.WriteLine("Такого дня недели не существует)");
