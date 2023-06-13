@@ -9,11 +9,11 @@ int a = int.Parse(Console.ReadLine());
 Console.Write("Введи второе число: ");
 int b = int.Parse(Console.ReadLine());
 
-int c = b % a;
+// int c = b % a;
 
-if (c > 0)
+if (b % a > 0)
 {
-    Console.WriteLine($"Второе число не кратно первому, остаток от деления равен {c}");
+    Console.WriteLine($"Второе число не кратно первому, остаток от деления равен {b % a}");
 }
 else
 {
