@@ -9,7 +9,6 @@ a = -3 b = 9 -> нет */
 Console.Write("Введи первое целое число: ");
 int number = int.Parse(Console.ReadLine());
 
-
 Console.Write("Введи второе целое число: ");
 int number_2 = int.Parse(Console.ReadLine());
 
