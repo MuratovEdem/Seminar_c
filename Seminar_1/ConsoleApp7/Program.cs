@@ -11,7 +11,7 @@ int b = int.Parse(Console.ReadLine());
 
 // int c = b % a;
 
-if (b % a > 0)
+if (b % a != 0)
 {
     Console.WriteLine($"Второе число не кратно первому, остаток от деления равен {b % a}");
 }
