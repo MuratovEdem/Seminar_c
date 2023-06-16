@@ -3,7 +3,7 @@
 // Не используя работу со строками. Использовать цикл while
 
 Console.Write("Введи число: ");
-int a = int.Parse(Console.ReadLine());
+int a = Convert.ToInt32(Console.ReadLine());
 int b = 0;
 
 while (a != 0)
