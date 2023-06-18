@@ -4,19 +4,30 @@
 Console.Write("Ведите любое число: ");
 int number = int.Parse(Console.ReadLine());
 
-int count = 1;
-int result = 1;
-
-if (number > 99)
+int result = 0;
+if ((-99 > number) || (number > 99))
 {
-    while (count > 0)
+    if (number > 99)
     {
-        result = (result * 10) + (number % 10);
-        count = number / 10;
+        while (number > 1000)
+        {
+            number = number / 10;
+        }
+        result = number % 10;
+        Console.WriteLine($"Третья цифра заданного числа равна {result}");
     }
+    if (number < -99)
+    {
+        while (number < -1000)
+        {
+            number = number / 10;
+        }
+        result = number % 10;
+        Console.WriteLine($"Третья цифра заданного числа равна {Math.Abs(result)}");
+    }
+    
 }
 else
 {
-    Console.WriteLine("число вне диапазона");
+    Console.WriteLine("Число вне диапазона");
 }
-Console.WriteLine(result);
