@@ -3,12 +3,6 @@
 //в которой находится эта точка. 
 
 
-int GetAreaNumber(int x, int y)
-{
-    
-}
-
-
 int GetSum(int a, int b)
 {
     int result = a + b;
