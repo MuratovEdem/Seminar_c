@@ -8,7 +8,9 @@ for (int i = 0; i < array.Length; i++)
     array[i] = new Random().Next(1, 10);
     Console.Write(array[i] + " ");
 }
+
 Console.WriteLine();
+
 int[] array_new = null;
 if (array.Length % 2 == 0)
 {
@@ -22,6 +24,7 @@ int index = 0;
 int count = 0;
 int size = array.Length - 1;
 int sum = 0;
+
 while (count <= size)
 {
     if (count == size)
