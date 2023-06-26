@@ -21,3 +21,4 @@ for (int i = 0; i < array.Length; i++)
 }
 Console.Write($"Количество четных чисел в массиве: {count}");
 
+
