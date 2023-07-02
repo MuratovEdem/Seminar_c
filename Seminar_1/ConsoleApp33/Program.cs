@@ -52,7 +52,7 @@ while (matrix[countRow, countCol] == 0)
     {
         if (matrix[row, col] == 0)
         {
-            RigtRun(row, col);
+            RandomNumberMatrix(row, col);
             col++;
         }
         else
@@ -65,7 +65,7 @@ while (matrix[countRow, countCol] == 0)
     {
         if (matrix[row, col] == 0)
         {
-            RigtRun(row,col);
+            RandomNumberMatrix(row,col);
             row++;
         }
         else
@@ -78,7 +78,7 @@ while (matrix[countRow, countCol] == 0)
     {
         if (matrix[row, col] == 0)
         {   
-            RigtRun(row,col);
+            RandomNumberMatrix(row,col);
             col--;
         }
         else
@@ -91,7 +91,7 @@ while (matrix[countRow, countCol] == 0)
     {
         if (matrix[row, col] == 0)
         {
-            RigtRun(row,col);
+            RandomNumberMatrix(row,col);
             row--;
         }
         else
@@ -108,7 +108,7 @@ while (matrix[countRow, countCol] == 0)
 }
 
 
-void RigtRun(int row, int col)
+void RandomNumberMatrix(int row, int col)
 {
     matrix[row, col] = new Random().Next(1,10);
     Print(matrix);
