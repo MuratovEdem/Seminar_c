@@ -31,18 +31,84 @@ string question10 = @"Вопрос 10: Что стало популярным б
 a) коктейли     b) фастфуд     c) шведский стол     d) еда на вынос"; // c
 
 
-int lose = 0;
-int win = 0;  
+string[,] answerOptions = new string[10, 4] {{"a) завтрак", "b) обед", "c) полдник", "d) ужин"},
+                                             {"a) хлебу", "b) кексу", "c) бублику", "d) прянику"},
+                                             {"a) пирожок", "b) фуа-гра", "c) кисель", "d) яблоко"},
+                                             {"a) окрошку", "b) гаспачо", "c) рассольник", "d) свекольник"},
+                                             {"a) онигири", "b) кимчи", "c) ушу", "d) группу 'BTS'"},
+                                             {"a) оливковое масло", "b) томаты", "c) моцарелла", "d) базилик"},
+                                             {"a) грибы", "b) петрушка", "c) яблоки", "d) клубника"},
+                                             {"a) бефстроганов", "b) цыпленок табака", "c) шницель по-венски","d) ростбиф"},
+                                             {"a) темпура", "b) рамэн", "c) суши", "d) гедза"},
+                                             {"a) коктейли", "b) фастфуд", "c) шведский стол", "d) еда на вынос"}};
 
-
-string[,] questionsArray = new string[2,10] { {question1, question2, question3, question4, question5, question6, question7, question8, question9, question10},
+string[,] questionsArray = new string[2, 10] { {question1, question2, question3, question4, question5, question6, question7, question8, question9, question10},
                                               {"d", "d", "b", "c", "b", "a", "c", "a", "c", "c"} };
 
-for (int i = 0; i < questionsArray.Length; i++)
+int countLife = 0;
+int count50on50 = 0;
+int countPhone = 0;
+int countHall = 0;
+
+for (int i = 0; i < questionsArray.GetLength(1); i++)
 {
-    Console.WriteLine(questionsArray[0,i]);
+    Console.WriteLine(questionsArray[0, i]);
     string answerquestion = Console.ReadLine();
-    if (questionsArray[1,i] == answerquestion)
+    if (answerquestion == "1") // подсказка 50 на 50
+    {
+        if (count50on50 == 0)
+        {
+            count50on50++;
+            Get50on50(answerOptions, questionsArray, i);
+            answerquestion = Console.ReadLine();
+        }
+        else
+        {
+            Console.WriteLine("К сожалению вы уже использовали подсказку '50 на 50'");
+            Console.WriteLine();
+            Console.WriteLine(questionsArray[0, i]);
+            answerquestion = Console.ReadLine();
+        }
+    }
+    if (answerquestion == "2") // подсказка звонок другу
+    {
+        if (countPhone == 0)
+        {
+            countPhone++;
+            GetCallFriend(questionsArray, i);
+            Console.WriteLine("Каков будет ваш ответ на вопрос");
+            Console.WriteLine();
+            Console.WriteLine(questionsArray[0, i]);
+            answerquestion = Console.ReadLine();
+        }
+        else
+        {
+            Console.WriteLine("К сожалению вы уже использовали подсказку 'Звонок другу'");
+            Console.WriteLine();
+            Console.WriteLine(questionsArray[0, i]);
+            answerquestion = Console.ReadLine();
+        }
+    }
+    if (answerquestion == "3") // подсказка помощь зала
+    {
+        if (countHall == 0)
+        {
+            countHall++;
+            GetHallHelp(questionsArray, i);
+            Console.WriteLine("Что вы ответите на вопрос?");
+            Console.WriteLine();
+            Console.WriteLine(questionsArray[0, i]);
+            answerquestion = Console.ReadLine();  
+        }
+        else
+        {
+            Console.WriteLine("К сожалению вы уже использовали подсказку 'Помощь зала'");
+            Console.WriteLine();
+            Console.WriteLine(questionsArray[0, i]);
+            answerquestion = Console.ReadLine();
+        }
+    }
+    if (questionsArray[1, i] == answerquestion)
     {
         Console.WriteLine();
         Console.WriteLine("Совершенно верно! Это правильный ответ");
@@ -52,17 +118,73 @@ for (int i = 0; i < questionsArray.Length; i++)
     {
         Console.WriteLine();
         Console.WriteLine("К сожалению ответ неверный");
-        lose++;
-        if (lose == 1){
+        countLife++;
+        if (countLife == 1)
+        {
             Console.WriteLine("Но не огорчайтесь, ведь у вас есть еще 1 попытка");
             Console.WriteLine();
         }
-        else{
+        else
+        {
             Console.WriteLine("У вас закончились попытки. Вы проиграли");
             Environment.Exit(0);
         }
     }
 }
+Console.WriteLine("Поздравляем вы победили в игре 'Кто хочет стать миллионером'");
+
+
+void Get50on50(string[,] Options, string[,] Questions, int i)
+{
+    if (Questions[1,i] == "a" || Questions[1,i] == "b"){
+        string temp = Options[i, 0] + " " + Options[i, 1];
+        Console.WriteLine("Оставшиеся варианты ответов: ");
+        Console.WriteLine(temp);
+    }
+    if (Questions[1,i] == "c" || Questions[1,i] == "d"){
+        string temp = Options[i, 2] + " " + Options[i, 3];
+        Console.WriteLine("Оставшиеся варианты ответов: ");
+        Console.WriteLine(temp);
+    }
+}
+
+void GetCallFriend(string[,] Questions, int i)
+{
+    Console.WriteLine(@"Вы решили воспользоваться звонком другу. Выберите одного друга из списка (напишите цирфу рядом с именем)
+1) Андрей    2) Тимур     3) Настя");
+    string answer = Console.ReadLine();
+    if (answer == "1"){
+        Console.WriteLine("Андрей не знает правильного ответа и наугад отвечает: " + Questions[1,i]);
+    }
+    if (answer == "2"){
+        Console.WriteLine("Тимур уверенно заявляет, что правильный ответ: " + Questions[1,i]);
+    }
+    if (answer == "3"){
+        Console.WriteLine("В ходе недолгих раздумий Настя дает ответ: " + Questions[1,i]);
+    }
+}
+
+void GetHallHelp(string[,] Questions, int i)
+{
+    Console.WriteLine("Вы воспользовались подсказкой 'Помощь зала'. И вот что отвечают зрители");
+    if (Questions[1,i] == "a"){
+        Console.WriteLine(@"86% зрителей выбрали вариант ответа 'a'; 4% зрителей выбрали вариант 'b'; 
+7% зрителей выбрали вариант 'c'; 3% зрителей выбрали вариант 'd'");
+    }
+    if (Questions[1,i] == "b"){
+        Console.WriteLine(@"5% зрителей выбрали вариант ответа 'a'; 82% зрителей выбрали вариант 'b'; 
+6% зрителей выбрали вариант 'c'; 7% зрителей выбрали вариант 'd'");
+    }
+    if (Questions[1,i] == "c"){
+        Console.WriteLine(@"10% зрителей выбрали вариант ответа 'a'; 1% зрителей выбрали вариант 'b'; 
+88% зрителей выбрали вариант 'c'; 1% зрителей выбрали вариант 'd'");
+    }
+    if (Questions[1,i] == "d"){
+        Console.WriteLine(@"2% зрителей выбрали вариант ответа 'a'; 3% зрителей выбрали вариант 'b'; 
+1% зрителей выбрали вариант 'c'; 94% зрителей выбрали вариант 'd'");
+    }
+}
+
 
 
 
