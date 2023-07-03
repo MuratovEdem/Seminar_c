@@ -45,6 +45,12 @@ string[,] answerOptions = new string[10, 4] {{"a) завтрак", "b) обед"
 string[,] questionsArray = new string[2, 10] { {question1, question2, question3, question4, question5, question6, question7, question8, question9, question10},
                                               {"d", "d", "b", "c", "b", "a", "c", "a", "c", "c"} };
 
+Console.WriteLine(@"Правила игры: пиши варианты ответов английскими строчными буквами. У вас есть запасная жизнь.
+Также у вас есть подсказки, для их вызова напишите цифру '1' выдаст подсказку 50 на 50; цифра '2' выдаст подсказку Звонок другу; 
+и при вводе цифры '3' вы воспользуетесь помощью зала. Надеюсь правила понятны, приятной игры");
+
+Console.WriteLine();
+
 int countLife = 0;
 int count50on50 = 0;
 int countPhone = 0;
