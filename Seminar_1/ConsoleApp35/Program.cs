@@ -59,21 +59,21 @@ int countHall = 0;
 for (int i = 0; i < questionsArray.GetLength(1); i++)
 {
     Console.WriteLine(questionsArray[0, i]);
-    string answerquestion = Console.ReadLine();
+    string answerquestion = CorrectValue();
     if (answerquestion == "1") // подсказка 50 на 50
     {
         if (count50on50 == 0)
         {
             count50on50++;
             Get50on50(answerOptions, questionsArray, i);
-            answerquestion = Console.ReadLine();
+            answerquestion = CorrectValue();
         }
         else
         {
             Console.WriteLine("К сожалению вы уже использовали подсказку '50 на 50'");
             Console.WriteLine();
             Console.WriteLine(questionsArray[0, i]);
-            answerquestion = Console.ReadLine();
+            answerquestion = CorrectValue();
         }
     }
     if (answerquestion == "2") // подсказка звонок другу
@@ -85,14 +85,14 @@ for (int i = 0; i < questionsArray.GetLength(1); i++)
             Console.WriteLine("Каков будет ваш ответ на вопрос");
             Console.WriteLine();
             Console.WriteLine(questionsArray[0, i]);
-            answerquestion = Console.ReadLine();
+            answerquestion = CorrectValue();
         }
         else
         {
             Console.WriteLine("К сожалению вы уже использовали подсказку 'Звонок другу'");
             Console.WriteLine();
             Console.WriteLine(questionsArray[0, i]);
-            answerquestion = Console.ReadLine();
+            answerquestion = CorrectValue();
         }
     }
     if (answerquestion == "3") // подсказка помощь зала
@@ -104,14 +104,14 @@ for (int i = 0; i < questionsArray.GetLength(1); i++)
             Console.WriteLine("Что вы ответите на вопрос?");
             Console.WriteLine();
             Console.WriteLine(questionsArray[0, i]);
-            answerquestion = Console.ReadLine();  
+            answerquestion = CorrectValue();  
         }
         else
         {
             Console.WriteLine("К сожалению вы уже использовали подсказку 'Помощь зала'");
             Console.WriteLine();
             Console.WriteLine(questionsArray[0, i]);
-            answerquestion = Console.ReadLine();
+            answerquestion = CorrectValue();
         }
     }
     if (questionsArray[1, i] == answerquestion)
@@ -142,6 +142,7 @@ Console.WriteLine("Поздравляем вы победили в игре 'К�
 
 void Get50on50(string[,] Options, string[,] Questions, int i)
 {
+    Console.WriteLine("Вы воспользовались подсказкой '50 на 50'");
     if (Questions[1,i] == "a" || Questions[1,i] == "b"){
         string temp = Options[i, 0] + " " + Options[i, 1];
         Console.WriteLine("Оставшиеся варианты ответов: ");
@@ -191,8 +192,26 @@ void GetHallHelp(string[,] Questions, int i)
     }
 }
 
-
-
-
-
-
+string CorrectValue()
+{
+    string answer = Console.ReadLine();
+    if (answer == "a" || answer == "b" || answer == "c" || answer == "d" || answer == "1" || answer == "2" || answer == "3")
+    {
+        return answer;
+    }
+    else
+    {
+        int count = 0;
+        while (count < 1)
+        {
+            Console.WriteLine("Введено некорректное значение, пожалуйста, попробуйте снова");
+            answer = Console.ReadLine();
+            if (answer == "a" || answer == "b" || answer == "c" || answer == "d" || answer == "1" || answer == "2" || answer == "3")
+            {
+                count++;
+            }
+            
+        }
+        return answer;
+    }
+}
