@@ -20,8 +20,8 @@ Console.WriteLine($"Значение элемента равно {ElementValue(a
 
 int ElementValue(int[,] arr, int row, int col)
 {
-    int temp = arr[row, col];
-    return temp;
+    int result = arr[row, col];
+    return result;
 }
 
 void PrintArray (int[,] arr)
