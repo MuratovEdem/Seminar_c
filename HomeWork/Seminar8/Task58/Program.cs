@@ -6,7 +6,6 @@
 // 18 20
 // 15 18
 
-
 void InitArray (int[,] arr)
 {
     for (int i = 0; i < arr.GetLength(0); i++)
@@ -30,36 +29,41 @@ void PrintArray (int[,] arr)
     }
 }
 
+int[,] array = new int[3,3];
 
-int[,] array = new int[5,5];
+int[,] array1 = new int[array.GetLength(0), array.GetLength(1)];
 
-int[,] array1 = new int[5,5];
-
-int[,] arrayResult = new int[5,5];
+int[,] arrayResult = new int[array.GetLength(0), array.GetLength(1)];
 
 InitArray(array);
+
 PrintArray(array);
+
 Console.WriteLine();
+
 InitArray(array1);
+
 PrintArray(array1);
+
 Console.WriteLine();
-for (int i = 0; i < array.GetLength(0); i++)
+
+for (int i = 0; i < arrayResult.GetLength(0); i++)
 {
-    for (int j = 0; j < array1.GetLength(1); j++)
+    for (int j = 0; j < arrayResult.GetLength(1); j++)
     {
         arrayResult[i,j] = MultiplicationMatrix(array, array1, i, j);
     }
 }
-PrintArray(arrayResult);
 
+PrintArray(arrayResult);
 
 int MultiplicationMatrix(int[,] arr, int[,] arr1, int i, int j)
 {
     int number = 0;
     int result = 0;
-    for (int k = 0; k < arr.GetLength(0); k++)
+    for (int k = 0; k < 3; k++)
     {
-        number = arr[k,j] * arr1[i,k];
+        number = arr[i,k] * arr1[k,j];
         result = result + number;
     }
     return result;
