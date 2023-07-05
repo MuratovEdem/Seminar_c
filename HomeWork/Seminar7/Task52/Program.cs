@@ -26,12 +26,12 @@ void GetArithmeticMean (int[,] arr)
 
 void PrintArray (int[,] arr)
 {
-    for (int i = 0; i < array.GetLength(0); i++)
+    for (int i = 0; i < arr.GetLength(0); i++)
     {
-        for (int j = 0; j < array.GetLength(1); j++)
+        for (int j = 0; j < arr.GetLength(1); j++)
         {
-            array[i,j] = new Random().Next(1,10);
-            Console.Write(array[i,j] + " ");
+            arr[i,j] = new Random().Next(1,10);
+            Console.Write(arr[i,j] + " ");
         }
         Console.WriteLine();
     }
